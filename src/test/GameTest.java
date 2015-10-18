@@ -61,7 +61,7 @@ public class GameTest {
 		assertEquals(game.promptTextViewTitle(), Game.PROMPT + RoomType.GROUND.toString());
 
 		game.moveHunter(Direction.NORTH);
-		assertTrue(!game.isSafe());
+		assertFalse(game.isSafe());
 		assertEquals(game.getHunterOldPoint(), new Point(0, 50));
 		assertEquals(game.promptTextViewTitle(), Game.PROMPT + RoomType.WUMPUS.toString());
 	}

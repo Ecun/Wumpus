@@ -60,10 +60,6 @@ public class Room {
 			add(e);
 	}
 
-	public ArrayList<MapElement> getList() {
-		return elements;
-	}
-
 	public void setImage() throws IOException {
 		unvisibleImage = ImageIO.read(new File("./image/Unvisible.png"));
 		image = ImageIO.read(new File(highElement.getImagePath()));

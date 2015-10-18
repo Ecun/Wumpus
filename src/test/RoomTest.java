@@ -4,10 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import org.junit.Test;
 
@@ -40,7 +37,7 @@ public class RoomTest {
 		Room room = new Room();
 		room.add(new Blood());
 		room.addAfterCheckGoop(new Slime());
-		assertTrue(room.getType() == RoomType.GOOP);
+		assertEquals(room.getType(),RoomType.GOOP);
 	}
 
 	@Test
@@ -50,8 +47,7 @@ public class RoomTest {
 		room.addAfterCheckGoop(new Slime());
 		room.add(new Wumpus());
 		room.add(new Pit());
-		System.out.println(room.getType());
-		System.out.println(room.getList().toString());
+		assertEquals(room.getType(), RoomType.WUMPUS);
 	}
 
 	@Test

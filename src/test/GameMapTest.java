@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import model.GameMap;
+import model.RoomType;
 
 public class GameMapTest {
 
@@ -62,5 +63,37 @@ public class GameMapTest {
 		expect.append(System.getProperty("line.separator"));
 		
 		assertEquals(expect.toString(), map.printMap(result).toString());
+	}
+	
+	@Test
+	public void testExtendBloodAndSlime(){
+		GameMap map = new GameMap();
+		map.createRooms();
+		map.initializeWumpusAndPit(4);
+		map.addRoomsToMap();
+		map.extendBloodAndSlime();
+		
+		assertEquals(map.getRoom(0, 0).getType(), RoomType.WUMPUS);
+		assertEquals(map.getRoom(0, 1).getType(), RoomType.PIT);
+		assertEquals(map.getRoom(0, 2).getType(), RoomType.PIT);
+		assertEquals(map.getRoom(0, 3).getType(), RoomType.PIT);
+		assertEquals(map.getRoom(0, 4).getType(), RoomType.SLIME);
+		assertEquals(map.getRoom(0, 8).getType(), RoomType.BLOOD);
+		assertEquals(map.getRoom(0, 9).getType(), RoomType.BLOOD);
+		
+		assertEquals(map.getRoom(1, 0).getType(), RoomType.BLOOD);
+		assertEquals(map.getRoom(1, 1).getType(), RoomType.GOOP);
+		assertEquals(map.getRoom(1, 2).getType(), RoomType.SLIME);
+		assertEquals(map.getRoom(1, 3).getType(), RoomType.SLIME);
+		assertEquals(map.getRoom(1, 4).getType(), RoomType.GROUND);
+		
+		assertEquals(map.getRoom(2, 0).getType(), RoomType.BLOOD);
+		assertEquals(map.getRoom(2, 1).getType(), RoomType.GROUND);
+			
+		assertEquals(map.getRoom(9, 0).getType(), RoomType.BLOOD);
+		assertEquals(map.getRoom(9, 1).getType(), RoomType.GOOP);
+		assertEquals(map.getRoom(9, 2).getType(), RoomType.SLIME);
+		assertEquals(map.getRoom(9, 3).getType(), RoomType.SLIME);
+		assertEquals(map.getRoom(9, 4).getType(), RoomType.GROUND);
 	}
 }

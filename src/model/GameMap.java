@@ -113,7 +113,7 @@ public class GameMap {
 	public void initializeWumpusAndPit(int randomPit) {
 		Wumpus wp = new Wumpus();
 		rooms.get(0).add(wp);
-		for (int i = 1; i < randomPit; i++) {
+		for (int i = 1; i < randomPit+1; i++) {
 			Pit pit = new Pit();
 			rooms.get(i).add(pit);
 		}
