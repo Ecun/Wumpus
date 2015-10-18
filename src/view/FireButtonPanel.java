@@ -29,6 +29,7 @@ public class FireButtonPanel extends ArrowButtonPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, game.shotWumpusOrHunter(Direction.NORTH));
+			game.deleteObservers();
 		}
 
 	}
@@ -38,6 +39,7 @@ public class FireButtonPanel extends ArrowButtonPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, game.shotWumpusOrHunter(Direction.SOUTH));
+			game.deleteObservers();
 		}
 
 	}
@@ -47,6 +49,7 @@ public class FireButtonPanel extends ArrowButtonPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, game.shotWumpusOrHunter(Direction.WEST));
+			game.deleteObservers();
 		}
 
 	}
@@ -56,6 +59,7 @@ public class FireButtonPanel extends ArrowButtonPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, game.shotWumpusOrHunter(Direction.EAST));
+			game.deleteObservers();
 		}
 
 	}

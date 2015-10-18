@@ -21,8 +21,12 @@ public class Game extends Observable {
 	private Hunter hunter;
 	private GameMap map;
 
-	public Game(GameMap map) {
-		this.map = map;
+	public Game(GameMap gameMap) throws IOException {
+		this.map = gameMap;
+	}
+	
+	public Game(){
+		map = new GameMap();
 	}
 	
 	public void initialization() throws IOException{

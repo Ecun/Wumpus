@@ -11,6 +11,17 @@ import mapElement.*;
 import model.*;
 
 public class GameTest {
+	
+	@Test
+	public void testGameInitialiazation() throws IOException{
+		GameMap map = new GameMap();
+		map.initializeMap();
+		Game game = new Game(map);
+		game.initialization();
+		
+		assertTrue(game.isSafe());
+	}
+	
 	@Test
 	public void testGetHunterOldPoint() throws IOException {
 		GameMap map = new GameMap();
@@ -24,7 +35,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testIfHunterLocationIsNotSafe() {
+	public void testIfHunterLocationIsNotSafe() throws IOException {
 		GameMap map = new GameMap();
 		map.createRooms();
 		map.initializeWumpusAndPit(4);
@@ -35,7 +46,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testMoveHunter() {
+	public void testMoveHunter() throws IOException {
 		GameMap map = new GameMap();
 		map.createRooms();
 		map.initializeWumpusAndPit(4);
@@ -56,7 +67,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testHunterFire() {
+	public void testHunterFire() throws IOException {
 		GameMap map = new GameMap();
 		map.createRooms();
 		map.initializeWumpusAndPit(4);
@@ -83,7 +94,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testMessageAfterFire() {
+	public void testMessageAfterFire() throws IOException {
 		GameMap map = new GameMap();
 		map.createRooms();
 		map.initializeWumpusAndPit(4);
@@ -110,7 +121,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testGetRoomHint() {
+	public void testGetRoomHint() throws IOException {
 		GameMap map = new GameMap();
 		map.createRooms();
 		map.initializeWumpusAndPit(4);
@@ -140,7 +151,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testPrintMap() {
+	public void testPrintMap() throws IOException {
 		GameMap map = new GameMap();
 		map.createRooms();
 		map.initializeWumpusAndPit(4);

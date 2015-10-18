@@ -13,6 +13,7 @@ public class MapElementTest {
 		MapElement element = new Ground();
 		Ground ground = new Ground();
 		assertEquals(ground.hint(), element.hint());
+		assertEquals(ground.getImagePath(),"./image/Ground.png");
 	}
 
 	@Test
@@ -27,6 +28,7 @@ public class MapElementTest {
 		MapElement element = new Blood();
 		Blood blood = new Blood();
 		assertEquals(blood.hint(), element.hint());
+		assertEquals(blood.getImagePath(),"./image/Blood.png");
 	}
 
 	@Test
@@ -47,6 +49,7 @@ public class MapElementTest {
 		MapElement element = new Slime();
 		Slime slime = new Slime();
 		assertEquals(slime.hint(), element.hint());
+		assertEquals(slime.getImagePath(),"./image/Slime.png");
 	}
 	
 	@Test
@@ -67,6 +70,7 @@ public class MapElementTest {
 		MapElement element = new Goop();
 		Goop goop = new Goop();
 		assertEquals(goop.hint(), element.hint());
+		assertEquals(goop.getImagePath(),"./image/Goop.png");
 	}
 	
 	@Test
@@ -87,6 +91,7 @@ public class MapElementTest {
 		MapElement element = new Pit();
 		Pit pit = new Pit();
 		assertEquals(pit.hint(), element.hint());
+		assertEquals(pit.getImagePath(),"./image/SlimePit.png");
 	}
 
 	@Test
@@ -107,6 +112,7 @@ public class MapElementTest {
 		MapElement element = new Wumpus();
 		Wumpus wumpus = new Wumpus();
 		assertEquals(wumpus.hint(), element.hint());
+		assertEquals(wumpus.getImagePath(),"./image/Wumpus.png");
 	}
 	
 	@Test

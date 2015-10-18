@@ -42,7 +42,7 @@ public class RunGameGUI extends JFrame {
 		setLocation(100, 30);
 		setLayout(null);
 
-		game = new Game(new GameMap());
+		game = new Game();
 		game.initialization();
 		viewPanel = new ViewPanel(game);
 		operationPanel = new OperationPanel(game);

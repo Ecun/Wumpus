@@ -56,8 +56,10 @@ public class ImageView extends JPanel implements Observer {
 
 		drawBoardWithAnimation();
 		System.out.println(game.getHunterOldPoint());
-		if (!game.isSafe())
+		if (!game.isSafe()){
 			JOptionPane.showMessageDialog(null, game.hintFromCurrentRoom());
+			game.deleteObservers();
+		}
 
 	}
 

@@ -83,13 +83,12 @@ public class RoomTest {
 		assertEquals(wumpus.hint(), room.hint());
 	}
 
-	/**
+
 	@Test
 	public void testGetImageBeforeAndAfterReveal() throws IOException   {
 		Room room = new Room();
-		room.setImage();
-		assertEquals(room.getImage(), ImageIO.read(new File("./image/Unvisible.png")).hashCode());		
-	}*/
+		room.setImage();	
+	}
 	
 	@Test
 	public void testToText(){
