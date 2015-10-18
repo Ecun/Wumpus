@@ -42,21 +42,21 @@ public class GameTest {
 		map.addRoomsToMap();
 		Game game = new Game(map);
 		game.initializeHunterLocation(1);
-		assertEquals(game.promptTextViewTitle(), Game.PROMPT+RoomType.GROUND.toString());
-		
+		assertEquals(game.promptTextViewTitle(), Game.PROMPT + RoomType.GROUND.toString());
+
 		game.moveHunter(Direction.WEST);
 		assertTrue(game.isSafe());
-		assertEquals(game.getHunterOldPoint(), new Point(50,50));
-		assertEquals(game.promptTextViewTitle(), Game.PROMPT+RoomType.GROUND.toString());
-		
+		assertEquals(game.getHunterOldPoint(), new Point(50, 50));
+		assertEquals(game.promptTextViewTitle(), Game.PROMPT + RoomType.GROUND.toString());
+
 		game.moveHunter(Direction.NORTH);
 		assertTrue(!game.isSafe());
-		assertEquals(game.getHunterOldPoint(), new Point(0,50));
-		assertEquals(game.promptTextViewTitle(), Game.PROMPT+RoomType.WUMPUS.toString());
+		assertEquals(game.getHunterOldPoint(), new Point(0, 50));
+		assertEquals(game.promptTextViewTitle(), Game.PROMPT + RoomType.WUMPUS.toString());
 	}
-	
+
 	@Test
-	public void testHunterFire(){
+	public void testHunterFire() {
 		GameMap map = new GameMap();
 		map.createRooms();
 		map.initializeWumpusAndPit(4);
@@ -67,13 +67,13 @@ public class GameTest {
 		assertFalse(game.hunterFire(Direction.SOUTH));
 		assertFalse(game.hunterFire(Direction.EAST));
 		assertFalse(game.hunterFire(Direction.WEST));
-		
+
 		game.moveHunter(Direction.WEST);
 		assertTrue(game.hunterFire(Direction.NORTH));
 		assertTrue(game.hunterFire(Direction.SOUTH));
 		assertFalse(game.hunterFire(Direction.EAST));
 		assertFalse(game.hunterFire(Direction.WEST));
-		
+
 		game.moveHunter(Direction.EAST);
 		game.moveHunter(Direction.NORTH);
 		assertFalse(game.hunterFire(Direction.NORTH));
@@ -81,36 +81,36 @@ public class GameTest {
 		assertTrue(game.hunterFire(Direction.EAST));
 		assertTrue(game.hunterFire(Direction.WEST));
 	}
-	
+
 	@Test
-	public void testMessageAfterFire(){
+	public void testMessageAfterFire() {
 		GameMap map = new GameMap();
 		map.createRooms();
 		map.initializeWumpusAndPit(4);
 		map.addRoomsToMap();
 		Game game = new Game(map);
 		game.initializeHunterLocation(1);
-		assertEquals(Game.SHOT_HUNTER_MESSAGE,game.shotWumpusOrHunter(Direction.NORTH));
-		assertEquals(Game.SHOT_HUNTER_MESSAGE,game.shotWumpusOrHunter(Direction.SOUTH));
-		assertEquals(Game.SHOT_HUNTER_MESSAGE,game.shotWumpusOrHunter(Direction.EAST));
-		assertEquals(Game.SHOT_HUNTER_MESSAGE,game.shotWumpusOrHunter(Direction.WEST));
-		
+		assertEquals(Game.SHOT_HUNTER_MESSAGE, game.shotWumpusOrHunter(Direction.NORTH));
+		assertEquals(Game.SHOT_HUNTER_MESSAGE, game.shotWumpusOrHunter(Direction.SOUTH));
+		assertEquals(Game.SHOT_HUNTER_MESSAGE, game.shotWumpusOrHunter(Direction.EAST));
+		assertEquals(Game.SHOT_HUNTER_MESSAGE, game.shotWumpusOrHunter(Direction.WEST));
+
 		game.moveHunter(Direction.WEST);
-		assertEquals(Game.SHOT_WUMPUS_MESSAGE,game.shotWumpusOrHunter(Direction.NORTH));
-		assertEquals(Game.SHOT_WUMPUS_MESSAGE,game.shotWumpusOrHunter(Direction.SOUTH));
-		assertEquals(Game.SHOT_HUNTER_MESSAGE,game.shotWumpusOrHunter(Direction.EAST));
-		assertEquals(Game.SHOT_HUNTER_MESSAGE,game.shotWumpusOrHunter(Direction.WEST));
-		
+		assertEquals(Game.SHOT_WUMPUS_MESSAGE, game.shotWumpusOrHunter(Direction.NORTH));
+		assertEquals(Game.SHOT_WUMPUS_MESSAGE, game.shotWumpusOrHunter(Direction.SOUTH));
+		assertEquals(Game.SHOT_HUNTER_MESSAGE, game.shotWumpusOrHunter(Direction.EAST));
+		assertEquals(Game.SHOT_HUNTER_MESSAGE, game.shotWumpusOrHunter(Direction.WEST));
+
 		game.moveHunter(Direction.EAST);
 		game.moveHunter(Direction.NORTH);
-		assertEquals(Game.SHOT_HUNTER_MESSAGE,game.shotWumpusOrHunter(Direction.NORTH));
-		assertEquals(Game.SHOT_HUNTER_MESSAGE,game.shotWumpusOrHunter(Direction.SOUTH));
-		assertEquals(Game.SHOT_WUMPUS_MESSAGE,game.shotWumpusOrHunter(Direction.EAST));
-		assertEquals(Game.SHOT_WUMPUS_MESSAGE,game.shotWumpusOrHunter(Direction.WEST));
+		assertEquals(Game.SHOT_HUNTER_MESSAGE, game.shotWumpusOrHunter(Direction.NORTH));
+		assertEquals(Game.SHOT_HUNTER_MESSAGE, game.shotWumpusOrHunter(Direction.SOUTH));
+		assertEquals(Game.SHOT_WUMPUS_MESSAGE, game.shotWumpusOrHunter(Direction.EAST));
+		assertEquals(Game.SHOT_WUMPUS_MESSAGE, game.shotWumpusOrHunter(Direction.WEST));
 	}
-	
+
 	@Test
-	public void testGetRoomHint(){
+	public void testGetRoomHint() {
 		GameMap map = new GameMap();
 		map.createRooms();
 		map.initializeWumpusAndPit(4);
@@ -118,24 +118,63 @@ public class GameTest {
 		map.extendBloodAndSlime();
 		Game game = new Game(map);
 		game.initializeHunterLocation(2);
-		
+
 		MapElement ground = new Ground();
-		assertEquals(game.hintFromCurrentRoom(),ground.hint());
-		
+		assertEquals(game.hintFromCurrentRoom(), ground.hint());
+
 		MapElement slime = new Slime();
 		game.moveHunter(Direction.NORTH);
-		assertEquals(game.hintFromCurrentRoom(),slime.hint());
-		
+		assertEquals(game.hintFromCurrentRoom(), slime.hint());
+
 		MapElement goop = new Goop();
 		game.moveHunter(Direction.WEST);
-		assertEquals(game.hintFromCurrentRoom(),goop.hint());
-		
+		assertEquals(game.hintFromCurrentRoom(), goop.hint());
+
 		MapElement pit = new Pit();
 		game.moveHunter(Direction.NORTH);
-		assertEquals(game.hintFromCurrentRoom(),pit.hint());
-		
+		assertEquals(game.hintFromCurrentRoom(), pit.hint());
+
 		MapElement wumpus = new Wumpus();
 		game.moveHunter(Direction.WEST);
 		assertEquals(game.hintFromCurrentRoom(), wumpus.hint());
+	}
+
+	@Test
+	public void testPrintMap() {
+		GameMap map = new GameMap();
+		map.createRooms();
+		map.initializeWumpusAndPit(4);
+		map.addRoomsToMap();
+		map.extendBloodAndSlime();
+		Game game = new Game(map);
+		game.initializeHunterLocation(2);
+
+		MapElement ground = new Ground();
+		StringBuffer text = map.printMap(new StringBuffer());
+		assertEquals(game.printMap().toString(), text.append(ground.hint()).toString());
+		text.setLength(0);
+
+		MapElement slime = new Slime();
+		game.moveHunter(Direction.NORTH);
+		text = map.printMap(new StringBuffer());
+		assertEquals(game.printMap().toString(), text.append(slime.hint()).toString());
+		text.setLength(0);
+
+		MapElement goop = new Goop();
+		game.moveHunter(Direction.WEST);
+		text = map.printMap(new StringBuffer());
+		assertEquals(game.printMap().toString(), text.append(goop.hint()).toString());
+		text.setLength(0);
+
+		MapElement pit = new Pit();
+		game.moveHunter(Direction.NORTH);
+		text = map.printMap(new StringBuffer());
+		assertEquals(game.printMap().toString(), text.append(pit.hint()).toString());
+		text.setLength(0);
+
+		MapElement wumpus = new Wumpus();
+		game.moveHunter(Direction.WEST);
+		text = map.printMap(new StringBuffer());
+		assertEquals(game.printMap().toString(), text.append(wumpus.hint()).toString());
 	}
 }

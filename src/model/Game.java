@@ -84,10 +84,10 @@ public class Game extends Observable {
 	}
 
 	public String printMap() {
-		StringBuffer mapToText = new StringBuffer();
-        mapToText = map.printMap(mapToText);
-		mapToText.append(hintFromCurrentRoom());
-		return mapToText.toString();
+		StringBuffer textView = new StringBuffer();
+        textView = map.printMap(textView);
+		textView.append(hintFromCurrentRoom());
+		return textView.toString();
 	}
 	
 	public String hintFromCurrentRoom(){
