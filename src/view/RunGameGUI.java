@@ -6,8 +6,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
-import model.Direction;
-import model.Game;
+import model.*;
 
 public class RunGameGUI extends JFrame {
 
@@ -25,7 +24,6 @@ public class RunGameGUI extends JFrame {
 					window = new RunGameGUI();
 					window.setVisible(true);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
@@ -44,7 +42,7 @@ public class RunGameGUI extends JFrame {
 		setLocation(100, 30);
 		setLayout(null);
 
-		game = new Game();
+		game = new Game(new GameMap());
 		game.initialization();
 		viewPanel = new ViewPanel(game);
 		operationPanel = new OperationPanel(game);

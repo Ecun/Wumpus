@@ -14,11 +14,13 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Game extends Observable {
 
+	public static final String PROMPT = "Current Room: ";
+	
 	private Hunter hunter;
 	private GameMap map;
 
-	public Game() {
-		map = new GameMap();
+	public Game(GameMap map) {
+		this.map = map;
 	}
 	
 	public void initialization() throws IOException{
@@ -26,13 +28,13 @@ public class Game extends Observable {
 		initializeHunterLocation(randomHunterLocation());
 	}
 	
-	private void initializeHunterLocation(int randomLocation) {
-		int row;
-		int col;
-		do {
-			row = randomHunterLocation();
+	public void initializeHunterLocation(int randomLocation) {
+		int row = randomLocation;
+		int col = randomLocation;
+	    while (!map.getRoom(row, col).isGround()){
+	    	row = randomHunterLocation();
 			col = randomHunterLocation();
-		} while (!map.getRoom(row, col).isGround());
+	    };
 		hunter = new Hunter(row, col);
 		map.getRoom(row, col).enteredBy(hunter);
 	}
@@ -61,7 +63,7 @@ public class Game extends Observable {
 	}
 	
 	public String promptTitle(){
-		return "Current Room: " + checkCurrentRoomType().toString();
+		return PROMPT + checkCurrentRoomType().toString();
 	}
 
 	public boolean hunterFire(Direction dir) {
