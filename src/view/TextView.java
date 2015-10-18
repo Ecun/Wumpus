@@ -32,7 +32,7 @@ public class TextView extends JPanel implements Observer{
 		text = new JTextPane();
 		text.setLayout(new BorderLayout());
 		
-		roomTitleText = new JTextField(game.promptTitle());
+		roomTitleText = new JTextField(game.promptTextViewTitle());
 		roomTitleText.setHorizontalAlignment(JTextField.CENTER);
 		roomTitleText.setBackground(Color.cyan);
 		text.add(roomTitleText,BorderLayout.NORTH);
@@ -55,6 +55,6 @@ public class TextView extends JPanel implements Observer{
 		mapText.setText("");
 		game = (Game)observable;
 		mapText.append(game.printMap());
-		roomTitleText.setText(game.promptTitle());
+		roomTitleText.setText(game.promptTextViewTitle());
 	}
 }

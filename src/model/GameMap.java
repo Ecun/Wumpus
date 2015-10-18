@@ -28,8 +28,7 @@ public class GameMap {
 		initializeWumpusAndPit(randomPitNumber());
 		Collections.shuffle(rooms);
 		addRoomsToMap();
-		extendBloodAroundWumpus();
-		extendSlimeAroundPits();
+		extendBloodAndSlime();
 		setMapImage();
 	}
 
@@ -129,6 +128,11 @@ public class GameMap {
 				map[i][j] = rooms.remove(0);
 			}
 		}
+	}
+	
+	public void extendBloodAndSlime(){
+		extendBloodAroundWumpus();
+		extendSlimeAroundPits();
 	}
 
 	private void extendBloodAroundWumpus() {

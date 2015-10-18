@@ -15,6 +15,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Game extends Observable {
 
 	public static final String PROMPT = "Current Room: ";
+	public static final String SHOT_WUMPUS_MESSAGE = "Wumpus is Killed, Win!";
+	public static final String SHOT_HUNTER_MESSAGE = "Hunter is killed, Game Over!";
 	
 	private Hunter hunter;
 	private GameMap map;
@@ -62,7 +64,7 @@ public class Game extends Observable {
 		return map.getLocationFrom(hunter).isSafe();
 	}
 	
-	public String promptTitle(){
+	public String promptTextViewTitle(){
 		return PROMPT + checkCurrentRoomType().toString();
 	}
 
@@ -78,17 +80,17 @@ public class Game extends Observable {
 		hunter.updateOldLocation();
 		setChanged();
 		notifyObservers();
-		return hunterFire(dir)? "Wumpus is Killed, Win!": "Hunter is killed, Game Over!";
+		return hunterFire(dir)? SHOT_WUMPUS_MESSAGE: SHOT_HUNTER_MESSAGE;
 	}
 
 	public String printMap() {
 		StringBuffer mapToText = new StringBuffer();
         mapToText = map.printMap(mapToText);
-		mapToText.append(promptCurrentRoom());
+		mapToText.append(hintFromCurrentRoom());
 		return mapToText.toString();
 	}
 	
-	public String promptCurrentRoom(){
+	public String hintFromCurrentRoom(){
 		return map.getLocationFrom(hunter).hint();
 	}
 
