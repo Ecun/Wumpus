@@ -25,7 +25,8 @@ public class GameMap {
 
 	public void initializeMap() throws IOException {
 		createRooms();
-		initializeWumpusAndPit();
+		initializeWumpusAndPit(randomPitNumber());
+		Collections.shuffle(rooms);
 		addRoomsToMap();
 		extendBloodAroundWumpus();
 		extendSlimeAroundPits();
@@ -110,15 +111,13 @@ public class GameMap {
 	/**
 	 * Add Wumpus and pit to room list then shuffle.
 	 */
-	public void initializeWumpusAndPit() {
+	public void initializeWumpusAndPit(int randomPit) {
 		Wumpus wp = new Wumpus();
-		rooms.get(50).add(wp);
-		for (int i = 0; i < randomPitNumber(); i++) {
+		rooms.get(0).add(wp);
+		for (int i = 1; i < randomPit; i++) {
 			Pit pit = new Pit();
 			rooms.get(i).add(pit);
 		}
-
-		Collections.shuffle(rooms);
 	}
 
 	/**
