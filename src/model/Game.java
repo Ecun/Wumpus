@@ -23,10 +23,10 @@ public class Game extends Observable {
 	
 	public void initialization() throws IOException{
 		map.initializeMap();
-		initializeHunterLocation();
+		initializeHunterLocation(randomHunterLocation());
 	}
 	
-	private void initializeHunterLocation() {
+	private void initializeHunterLocation(int randomLocation) {
 		int row;
 		int col;
 		do {
