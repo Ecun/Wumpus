@@ -20,6 +20,7 @@ public class Game extends Observable {
 	
 	private Hunter hunter;
 	private GameMap map;
+	private boolean gameContinue;
 
 	public Game(GameMap gameMap) throws IOException {
 		this.map = gameMap;
@@ -32,11 +33,12 @@ public class Game extends Observable {
 	public void initialization() throws IOException{
 		map.initializeMap();
 		initializeHunterLocation(randomHunterLocation());
+		gameContinue = true;
 	}
 	
-	public void initializeHunterLocation(int randomLocation) {
-		int row = randomLocation;
-		int col = randomLocation;
+	public void initializeHunterLocation(int random) {
+		int row = random;
+		int col = random;
 	    while (!map.getRoom(row, col).isGround()){
 	    	row = randomHunterLocation();
 			col = randomHunterLocation();
@@ -58,8 +60,10 @@ public class Game extends Observable {
 		hunter.move(dir);
 		hunterEnter();
 		checkCurrentRoomType();
-		if(!isSafe())
+		if(!isSafe()){
 			map.reveal();
+			gameContinue = false;
+		}
 		setChanged();
 		notifyObservers(dir);
 	}
@@ -82,9 +86,14 @@ public class Game extends Observable {
 	public String shotWumpusOrHunter(Direction dir){
 		map.reveal();
 		hunter.updateOldLocation();
+		gameContinue = false;
 		setChanged();
 		notifyObservers();
 		return hunterFire(dir)? SHOT_WUMPUS_MESSAGE: SHOT_HUNTER_MESSAGE;
+	}
+	
+	public boolean isContinuing(){
+		return gameContinue;
 	}
 
 	public String printMap() {

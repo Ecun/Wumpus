@@ -78,12 +78,14 @@ public class GameTest {
 		assertFalse(game.hunterFire(Direction.SOUTH));
 		assertFalse(game.hunterFire(Direction.EAST));
 		assertFalse(game.hunterFire(Direction.WEST));
+		assertFalse(game.isContinuing());
 
 		game.moveHunter(Direction.WEST);
 		assertTrue(game.hunterFire(Direction.NORTH));
 		assertTrue(game.hunterFire(Direction.SOUTH));
 		assertFalse(game.hunterFire(Direction.EAST));
 		assertFalse(game.hunterFire(Direction.WEST));
+		assertFalse(game.isContinuing());
 
 		game.moveHunter(Direction.EAST);
 		game.moveHunter(Direction.NORTH);
@@ -91,6 +93,7 @@ public class GameTest {
 		assertFalse(game.hunterFire(Direction.SOUTH));
 		assertTrue(game.hunterFire(Direction.EAST));
 		assertTrue(game.hunterFire(Direction.WEST));
+		assertFalse(game.isContinuing());
 	}
 
 	@Test

@@ -38,7 +38,7 @@ public class GameMapTest {
 	public void testGetMapTextView() {
 		GameMap map = new GameMap();
 		map.createRooms();
-		map.initializeWumpusAndPit(5);
+		map.initializeWumpusAndPit(4);
 		map.addRoomsToMap();
 		map.reveal();
 		
@@ -77,7 +77,7 @@ public class GameMapTest {
 		assertEquals(map.getRoom(0, 1).getType(), RoomType.PIT);
 		assertEquals(map.getRoom(0, 2).getType(), RoomType.PIT);
 		assertEquals(map.getRoom(0, 3).getType(), RoomType.PIT);
-		assertEquals(map.getRoom(0, 4).getType(), RoomType.SLIME);
+		assertEquals(map.getRoom(0, 4).getType(), RoomType.PIT);
 		assertEquals(map.getRoom(0, 8).getType(), RoomType.BLOOD);
 		assertEquals(map.getRoom(0, 9).getType(), RoomType.BLOOD);
 		
@@ -85,7 +85,7 @@ public class GameMapTest {
 		assertEquals(map.getRoom(1, 1).getType(), RoomType.GOOP);
 		assertEquals(map.getRoom(1, 2).getType(), RoomType.SLIME);
 		assertEquals(map.getRoom(1, 3).getType(), RoomType.SLIME);
-		assertEquals(map.getRoom(1, 4).getType(), RoomType.GROUND);
+		assertEquals(map.getRoom(1, 4).getType(), RoomType.SLIME);
 		
 		assertEquals(map.getRoom(2, 0).getType(), RoomType.BLOOD);
 		assertEquals(map.getRoom(2, 1).getType(), RoomType.GROUND);
@@ -94,6 +94,6 @@ public class GameMapTest {
 		assertEquals(map.getRoom(9, 1).getType(), RoomType.GOOP);
 		assertEquals(map.getRoom(9, 2).getType(), RoomType.SLIME);
 		assertEquals(map.getRoom(9, 3).getType(), RoomType.SLIME);
-		assertEquals(map.getRoom(9, 4).getType(), RoomType.GROUND);
+		assertEquals(map.getRoom(9, 4).getType(), RoomType.SLIME);
 	}
 }
