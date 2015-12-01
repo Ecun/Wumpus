@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
-import mapElement.*;
+import mapElement.Blood;
+import mapElement.Pit;
+import mapElement.Slime;
+import mapElement.Wumpus;
 
 /**
  * 
